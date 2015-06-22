@@ -1,0 +1,5 @@
+<form action="<%= complete_goal_url(goal) %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH">
+  <button>Completed</button>
+</form>

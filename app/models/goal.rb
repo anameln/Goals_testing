@@ -22,6 +22,6 @@ class Goal < ActiveRecord::Base
   private
 
   def set_default
-    self.completed = FALSE
+    self.completed ||= FALSE
   end
 end

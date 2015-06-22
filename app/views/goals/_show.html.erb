@@ -1,9 +1,14 @@
-<% if current_user.goals %>
+<% if user.goals %>
 Goals
 <ul>
-  <% current_user.goals.each do |goal| %>
+  <% user.goals.each do |goal| %>
+    <% next if goal.private? && goal.author_id != current_user_id %>
     <li><%= goal.content %>,
-       created at <%= goal.created_at %> status: <%= display_status(goal)%></li>
+       created at <%= goal.created_at %> status: <%= display_status(goal)%>
+       <% if !goal.completed? && goal.author_id == current_user_id %>
+        <%= render "goals/completed_button", goal: goal %>
+       <% end %>
+    </li>
   <% end %>
 </ul>
 <% end %>
