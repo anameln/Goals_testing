@@ -1,5 +1,8 @@
 <%= @user.username %>'s Page
 
+<%= render "comments/form", commentable_id: @user.id, commentable_type: "User"%>
+
+<%= render "comments/show", commentable: @user %>
 
 <%= render "goals/form", user: @user%>
 

@@ -32,6 +32,7 @@ feature "goal comments" do
   end
 
   it "can't comment on goals unless signed in" do
+    visit "/users/1"
     click_link('Pass the rails assessment')
     expect(page).to have_content "Sign In"
   end

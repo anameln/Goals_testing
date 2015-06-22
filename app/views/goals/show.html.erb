@@ -1,0 +1,6 @@
+<%= @goal.author.username %>'s Goal
+<%= @goal.content %>
+
+<%= render "comments/show", commentable: @goal %>
+
+<%= render "comments/form", commentable_id: @goal.id, commentable_type: "Goal"%>

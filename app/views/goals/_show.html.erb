@@ -3,7 +3,7 @@ Goals
 <ul>
   <% user.goals.each do |goal| %>
     <% next if goal.private? && goal.author_id != current_user_id %>
-    <li><%= goal.content %>,
+    <li><a href="<%= goal_url(goal)%>"><%= goal.content %></a>,
        created at <%= goal.created_at %> status: <%= display_status(goal)%>
        <% if !goal.completed? && goal.author_id == current_user_id %>
         <%= render "goals/completed_button", goal: goal %>

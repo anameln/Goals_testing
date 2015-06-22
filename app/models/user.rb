@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
 
   has_many :goals, class_name: "Goal", foreign_key: :author_id
 
+  has_many :comments, as: :commentable
+
+  has_many :authored_comments, class_name: "Comment", foreign_key: :author_id
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
   end

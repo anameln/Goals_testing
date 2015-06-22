@@ -17,6 +17,8 @@ class Goal < ActiveRecord::Base
 
   belongs_to :author, class_name: "User", foreign_key: :author_id
 
+  has_many :comments, as: :commentable 
+
   after_initialize :set_default
 
   private

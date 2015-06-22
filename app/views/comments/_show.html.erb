@@ -1,0 +1,7 @@
+<% if commentable.comments.present? %>
+  <ul>
+    <% commentable.comments.each do |comment| %>
+      <li><%= comment.body %></li>
+    <% end %>
+  </ul>
+<% end %>
