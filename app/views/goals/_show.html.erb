@@ -1,0 +1,9 @@
+<% if current_user.goals %>
+Goals
+<ul>
+  <% current_user.goals.each do |goal| %>
+    <li><%= goal.content %>,
+       created at <%= goal.created_at %> status: <%= display_status(goal)%></li>
+  <% end %>
+</ul>
+<% end %>

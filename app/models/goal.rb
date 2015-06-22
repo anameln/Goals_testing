@@ -12,5 +12,16 @@
 #
 
 class Goal < ActiveRecord::Base
-  validates :author_id, :content, :private, :completed, presence: true
+  validates :author_id, :content, presence: true
+  validates :private, :completed, inclusion: [true, false]
+
+  belongs_to :author, class_name: "User", foreign_key: :author_id
+
+  after_initialize :set_default
+
+  private
+
+  def set_default
+    self.completed = FALSE
+  end
 end
