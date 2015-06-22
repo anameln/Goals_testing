@@ -17,9 +17,15 @@ class Goal < ActiveRecord::Base
 
   belongs_to :author, class_name: "User", foreign_key: :author_id
 
-  has_many :comments, as: :commentable 
+  has_many :comments, as: :commentable
+
+  has_many :cheers
 
   after_initialize :set_default
+
+  def cheer_count
+    self.cheers.count
+  end
 
   private
 

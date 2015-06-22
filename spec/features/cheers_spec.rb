@@ -26,7 +26,7 @@ feature "cheers" do
     sign_out
     sign_in("katrina", "hurricane")
     visit "/users/1"
-    6.times do { click_button 'Cheer' }
+    6.times { click_button 'Cheer' }
     expect(page).to have_content "Out of cheers. Pay to cheer more."
   end
 

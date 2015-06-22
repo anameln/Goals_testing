@@ -13,6 +13,8 @@
 require 'BCrypt'
 
 class User < ActiveRecord::Base
+  DAILY_CHEER_LIMIT = 5
+
   attr_reader :password
   validates :username, :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
@@ -23,6 +25,8 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_many :authored_comments, class_name: "Comment", foreign_key: :author_id
+
+  has_many :cheers
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
@@ -49,6 +53,10 @@ class User < ActiveRecord::Base
     self.save!
 
     self.session_token
+  end
+
+  def cheers_made_today
+    self.cheers.where(created_at: Date.today).count
   end
 
   private
