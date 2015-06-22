@@ -36,7 +36,7 @@ feature "goal comments" do
     expect(page).to have_content "Sign In"
   end
 
-  it "redirects to user's page after making a comment" do
+  it "redirects to goal's page after making a comment" do
     sign_up("katrina", "hurricane")
     visit "/users/1"
     click_link('Pass the rails assessment')
