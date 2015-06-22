@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
   def create
     @comment = current_user.authored_comments.new(comment_params)
-    @comment.save
-    flash[:errors] = @comment.errors.full_messages
+
+    unless @comment.save
+      flash[:errors] = @comment.errors.full_messages
+    end
+
     if @comment.commentable_type == "User"
       redirect_to user_url(@comment.commentable_id)
     else

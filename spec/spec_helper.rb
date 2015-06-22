@@ -1,4 +1,4 @@
-
+require 'faker'
 RSpec.configure do |config|
 
   config.expect_with :rspec do |expectations|
@@ -45,5 +45,11 @@ RSpec.configure do |config|
 
   def sign_out
     click_button('Sign Out')
+  end
+
+  def make_goal
+    fill_in 'Goal', with: Faker::Company.bs
+    choose('Public')
+    click_button 'Add Goal'
   end
 end
