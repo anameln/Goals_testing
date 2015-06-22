@@ -42,7 +42,7 @@ RSpec.configure do |config|
   def sign_in_as_sennacy
     sign_in('Sennacy', 'catcatcat')
   end
-  
+
   def sign_out
     click_button('Sign Out')
   end

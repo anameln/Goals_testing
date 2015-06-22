@@ -21,7 +21,10 @@ feature "the signup process" do
 end
 
 feature "logging in" do
-
+  before :each do
+    sign_up_as_sennacy
+    sign_out
+  end
   it "shows username on the homepage after login" do
     sign_in_as_sennacy
     expect(page).to have_content "Sennacy"
@@ -30,6 +33,11 @@ feature "logging in" do
 end
 
 feature "logging out" do
+  before :each do
+    sign_up_as_sennacy
+    sign_out
+    visit "/session/new"
+  end
 
   it "begins with logged out state" do
     expect(page).to have_content "Sign In"
